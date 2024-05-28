@@ -26,7 +26,9 @@ namespace TestTask.Services.Implementations
         public Task<List<User>> GetUsers()
         {
             return Context.Users
-                .Where(user => user.Status == Enums.UserStatus.Inactive)
+                .Where(user => user.Orders
+                                   .Where(order =>order.CreatedAt.Year == 2010 && order.Status == OrderStatus.Paid)
+                                   .Any())
                 .ToListAsync();
         }
 
