@@ -18,7 +18,7 @@ namespace TestTask.Services.Implementations
             return Context.Users
                  .OrderByDescending(user => user.Orders
                                                 .Where(order => order.CreatedAt.Year == 2003 && order.Status == OrderStatus.Delivered)
-                                                .Sum(order => order.Quantity * order.Price))
+                                                .Select(order => order.Quantity * order.Price))
                  .FirstOrDefaultAsync();
                                         
         }
