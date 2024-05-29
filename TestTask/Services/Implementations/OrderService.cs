@@ -17,7 +17,7 @@ namespace TestTask.Services.Implementations
         public Task<Order> GetOrder()
         {
             return Context.Orders
-                 .Where(order => order.Quantity > 0)
+                 .Where(order => order.Quantity > 1)
                  .OrderByDescending(order => order.CreatedAt)
                  .FirstOrDefaultAsync();
         }
